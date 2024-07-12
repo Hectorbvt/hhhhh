@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta para pedir perdón</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        .envelope {
+            width: 300px;
+            height: 200px;
+            background: #ff6b81;
+            border-radius: 10px;
+            position: relative;
+            animation: envelopeBounce 2s infinite;
+        }
+        @keyframes envelopeBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        .envelope::before, .envelope::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #ff6b81;
+            border-radius: 10px;
+        }
+        .envelope::before {
+            top: -10px;
+            transform: rotate(-45deg);
+            transform-origin: 100% 100%;
+            z-index: 1;
+            transition: 1s;
+        }
+        .envelope::after {
+            top: 10px;
+            transform: rotate(45deg);
+            transform-origin: 100% 0%;
+            z-index: 0;
+            transition: 1s;
+        }
+        .envelope.open::before {
+            transform: rotate(0);
+        }
+        .envelope.open::after {
+            transform: rotate(0);
+        }
+        .letter {
+            width: 80%;
+            height: 80%;
+            background: #fff;
+            position: absolute;
+            top: 10%;
+            left: 10%;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+            transform: translateY(100%);
+            transition: 1s;
+            animation: letterSlide 1s forwards 1.5s;
+        }
+        @keyframes letterSlide {
+            to {
+                transform: translateY(0);
+            }
+        }
+        .heart {
+            font-size: 48px;
+            color: #e91e63;
+            animation: beat 1s infinite;
+        }
+        @keyframes beat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        h1 {
+            color: #e91e63;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease forwards 2.5s;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        p {
+            color: #333;
+            line-height: 1.6;
+            margin: 15px 0;
+            animation: fadeIn 1s ease forwards 3s;
+        }
+        .signature {
+            margin-top: 20px;
+            font-style: italic;
+            color: #555;
+            animation: fadeIn 1s ease forwards 3.5s;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff6b81;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            animation: fadeIn 1s ease forwards 4s;
+        }
+        button:hover {
+            background-color: #e91e63;
+        }
+    </style>
+</head>
+<body>
+    <div class="envelope" id="envelope">
+        <div class="letter">
+            <div class="heart">❤️</div>
+            <h1>Lo Siento</h1>
+            <p>
+                Hola Eli,
+            </p>
+            <p>
+                Quiero pedirte perdón por lo que pasó. No fue mi intención herirte y me duele saber que lo hice.
+            </p>
+            <p>
+                Eres muy importante para mí y valoro muchísimo nuestra amistad. Por favor, perdóname y dame la oportunidad de hacer las cosas bien.
+            </p>
+            <p>
+                Espero que podamos superar esto juntos y seguir adelante con nuestra amistad más fuerte que nunca.
+            </p>
+            <p class="signature">
+                Con todo mi cariño,<br>
+                Hector
+            </p>
+        </div>
+    </div>
+    <button onclick="openEnvelope()">Abrir</button>
+
+    <script>
+        function openEnvelope() {
+            document.getElementById('envelope').classList.toggle('open');
+        }
+    </script>
+</body>
+</html>
